@@ -1,0 +1,189 @@
+{
+    "swagger": "2.0",
+    "info": {
+    "version": "1.0.0", 
+    "title": "My TodoList Project CRUD",
+    "description": "My TodoList Project Application API"
+    
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    
+    "produces": [
+    "application/json"
+    ],
+    "definitions": {
+        "todo": {
+        "required": [
+        "task",
+        "date"
+        ],
+        "properties": {
+        "_id": {
+        "type": "object"
+       
+        },
+        
+        "task": {
+        "type": "string"
+        },
+        "date": {
+            "type": "date"
+            }
+        
+        }
+        },
+        "todos": {
+        "type": "array",
+        "$ref": "#/definitions/todo"
+        },
+        "updateUser": {
+            "required": [
+            "task",
+            "date"
+            ],
+            
+            "task": {
+            "type": "string"
+            },
+            "date": {
+                "type": "date"
+                }
+        }
+
+        },
+
+
+
+    
+    "paths": {
+        "/todos": {
+        "get": {
+        "tags": [
+        "todos"
+        ],
+        "summary": "Get all users in system",
+        "responses": {
+        "200": {
+        "description": "OK",
+        "schema": {
+        "$ref": "#/definitions/todos"
+        }
+        }
+        }
+        }
+    },
+
+         "/todo": {
+        "post": {
+        "tags": [
+        "todos"
+        ],
+        "description": "Create new user in system",
+        "parameters": [
+        {
+        "name": "user",
+        "in": "body",
+        "description": "Todo that we want to added",
+        "schema": {
+        "$ref": "#/definitions/todo"
+        }
+        }
+        ],
+        "produces": [
+        "application/json"
+        ],
+        "responses": {
+        "200": {
+        "description": "New todo is added",
+        "schema": {
+        "$ref": "#/definitions/todo"
+        }
+        }
+        }
+        }
+    },
+
+        "/todo/{id}": {
+            "parameters": [
+            {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of todo that we want to find",
+            "type": "object"
+            }
+            ],
+            "put": {
+            "summary": "Update todo with give ID",
+            "tags": [
+            "todos"
+            ],
+            "parameters": [
+            {
+            "name": "todo",
+            "in": "body",
+            "description": "todo with new values of properties",
+            "schema": {
+            "$ref": "#/definitions/updateUser"
+            }
+            }
+            ],
+            "responses": {
+            "200": {
+            "description": "todo is updated",
+            "schema": {
+            "$ref": "#/definitions/todo"
+            }
+            }
+            }
+            }
+        },
+
+        "/todos/{id}": {
+            "parameters": [
+            {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of todo that we want to find",
+            "type": "object"
+            }
+            ],
+            "delete": {
+            "summary": "Update todo with give ID",
+            "tags": [
+            "todos"
+            ],
+            
+            "responses": {
+            "200": {
+            "description": "todo is deleted",
+            "schema": {
+            "$ref": "#/definitions/todo"
+            }
+            }
+            }
+            }
+        }
+           
+             
+
+    }
+}
+
+
+
+
+
+    
+
+        
+
+            
+
+    
+
+
+
+
